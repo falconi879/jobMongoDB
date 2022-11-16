@@ -1,26 +1,27 @@
 package com.andre.jobMongoDB.resource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.andre.jobMongoDB.domain.User;
-import com.andre.jobMongoDB.services.UserService;
+import com.andre.jobMongoDB.domain.Category;
 
 @RestController
-@RequestMapping(value="/usuarios")
-public class UserResource {
-
-	@Autowired
-	private UserService service;
+@RequestMapping(value="/categorias")
+public class CategoryResource {
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<User>> findAll() {
-		List<User> list = service.findAll(); 
+	public ResponseEntity<List<Category>> findAll() {
+		List<Category> list = new ArrayList<>();
+		Category cat1 = new Category(1L,"Informatica");
+		list.addAll(Arrays.asList(cat1));
 		return ResponseEntity.ok().body(list);
 		}
+	
+
 }
